@@ -1,5 +1,4 @@
-﻿
-var img_stage,img_L_char,img_R_char,img_block,img_nico,img_eraser,img_nowloading,img_goal;
+﻿var img_stage,img_L_char,img_R_char,img_block,img_nico,img_eraser,img_nowloading,img_goal;
 var width=1000,height=600;//画面のサイズ
 var ymoveCount=-1;
 var xmoveCount=-1;
@@ -81,7 +80,7 @@ function loadMikuDraw(num)
     resetGame();
 	var line=0;
     var req = new XMLHttpRequest();
-    req.open("GET","test/data/stage/stage"+num+".txt",false);
+    req.open("GET","/data/stage/stage"+num+".txt",false);
     req.send(null);
     var text=req.responseText;
     //var s="0 40 40 80 \n";
@@ -135,7 +134,7 @@ function playGame()
 
   //ファイル数を取得
   var req = new XMLHttpRequest();
-  req.open("GET","test/data/stage/numCount.txt",false);
+  req.open("GET","/data/stage/numCount.txt",false);
   req.send(null);
   var text=req.responseText;
   
@@ -199,7 +198,6 @@ function resetGame()
   yAddValue=0;
   hightlitedItem=0;
 }
-function test(){}
 function game_init()
 {
 	var canvas = document.getElementById("canvas");
@@ -212,29 +210,29 @@ function game_init()
 	{
 		ctx = canvas.getContext('2d');
 	    var req = new XMLHttpRequest();
-	    req.open("GET","test/data/stage/numCount.txt",false);
+	    req.open("GET","/data/stage/numCount.txt",false);
 	    req.send(null);
 	    var text=req.responseText;
 		img_stage = new Array();
 		for (var i = 1; i <= text; i++)
 		{
 			img_stage[i-1] = new Image();
-			img_stage[i-1].src = "test/data/stage"+i+".png";
+			img_stage[i-1].src = "/data/stage"+i+".png";
 		}
 	    img_block = new Image();
-	    img_block.src = "test/data/block.png";
+	    img_block.src = "/data/block.png";
 	    img_L_char = new Image();
-	    img_L_char.src = "test/data/miku_L_walk.png";
+	    img_L_char.src = "/data/miku_L_walk.png";
 	    img_R_char = new Image();
-	    img_R_char.src = "test/data/miku_R_walk.png";
+	    img_R_char.src = "/data/miku_R_walk.png";
 	    img_nico = new Image();
-	    img_nico.src = "test/data/nico.png";
+	    img_nico.src = "/data/nico.png";
 	    img_eraser = new Image();
-	    img_eraser.src = "test/data/eraser.png";
+	    img_eraser.src = "/data/eraser.png";
 	    img_goal = new Image();
-		img_goal.src = "test/data/goal.png";
+		img_goal.src = "/data/goal.png";
 	    img_nowloading = new Image();
-		img_nowloading.src = "test/data/nowloading.png";
+		img_nowloading.src = "/data/nowloading.png";
 		
 		setInterval("draw()", 20);
 
@@ -718,6 +716,15 @@ function onClick(e)
 
     }
 	mousePressed=0;
+}
+function saveScene()
+{
+	var $ = __webpack_require__(0);
+	var global = Function('return this;')();
+	global.jQuery = $;
+	$.post(`/test`,
+	{ posx: posx },
+	(data) => {});
 }
 //キーボードが押された時の処理
 function keydownfunc(e)

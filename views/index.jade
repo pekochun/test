@@ -1,0 +1,37 @@
+﻿doctype html
+html
+  head
+    title 体重管理くん
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous")
+    script(src="/javascripts/bundle.js")
+  body(onload="game_init();")
+    nav(class="navbar navbar-inverse")
+      div(class="navbar-header")
+        a(class="navbar-brand" href="/") 体重管理くん
+      div(class="container-fluid")
+        ul(class="nav navbar-nav navbar-right")
+          if user
+            li
+              a(href="/logout") #{user.username} をログアウト
+          else
+            li
+              a(href="/login" onclick="window.open('/login','subwin','width=400,height=300');return false;") ログイン
+    div(class="container")
+    center
+        #play
+        | まだ全体的に制作中．おそらくバグだらけ．
+        br
+        | 公開しないとモチベーションが維持できないので公開．
+        br
+        | 「Save」ボタンとかも機能していない．押しても何も起こらない．
+        br
+        br
+        | マウスで画面をクリックしていくと，右上のアイコンで選択したアイテムが配置される．
+        br
+        | キーボードの矢印キーで初音ミクが動く．
+        br
+        canvas#canvas(width='1000', height='600')

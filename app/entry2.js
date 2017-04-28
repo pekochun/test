@@ -1,4 +1,6 @@
-﻿var img_stage,img_L_char,img_R_char,img_block,img_nico,img_eraser,img_nowloading,img_goal;
+﻿require('./entry');
+
+var img_stage,img_L_char,img_R_char,img_block,img_nico,img_eraser,img_nowloading,img_goal;
 var width=1000,height=600;//画面のサイズ
 var ymoveCount=-1;
 var xmoveCount=-1;
@@ -719,9 +721,6 @@ function onClick(e)
 }
 function saveScene()
 {
-	var $ = __webpack_require__(0);
-	var global = Function('return this;')();
-	global.jQuery = $;
 	$.post(`/test`,
 	{ posx: posx },
 	(data) => {});

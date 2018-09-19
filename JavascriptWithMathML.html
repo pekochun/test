@@ -1,0 +1,20 @@
+<html>
+<head>
+	<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script type="text/javascript">
+	function displayText()
+	{
+		var str = "<math>";
+		str += "<mi>i</mi>";
+		str += "</math>";
+		
+		var elem = document.getElementById("test");
+		elem.innerHTML = str;
+	}
+	</script> 
+</head>
+<body>
+	<div id="test"></div>
+	<input type="button" value="MathML" onclick="displayText()">
+</body>
+</html>
